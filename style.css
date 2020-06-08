@@ -21,7 +21,7 @@ div img {
 }
 
 img:hover {
-    background-color: red;
+    background-color: black;
 }
 
 input[type=text] {
@@ -31,14 +31,14 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-    width: 100%;
+    width: 200%;
 }
 
 .alt-wrap {
     display: block;
     position: relative;
     margin: 20px;
-    color: whitesmoke;
+    color: white;
     border: 1px solid mediumorchid;
 }
 
