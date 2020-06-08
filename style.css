@@ -16,16 +16,17 @@ div {
 div img {
     display: inline-block;
     width: auto;
-    max-height: 200px;
+    max-height: 600px;
     height: auto;
 }
 
 img:hover {
     background-color: black;
+    opacity: 1;
 }
 
 input[type=text] {
-    width: 430px;
+    width: 230px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
