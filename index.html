@@ -21,9 +21,9 @@
 </body>
 </html>
 
-<script>
 
-$("#myinput").keyup(function() {
+<script>
+    $("#myinput").keyup(function() {
     var val = $.trim(this.value);
     if (val === "")
         $('img').show();
@@ -32,9 +32,13 @@ $("#myinput").keyup(function() {
         $("img[alt*=" + val + " i]").show();
     }
 });
+</script>
+<script>
 
 $(".img").wrap('<div class="alt-wrap"/>');
 
+</script>
+<script>
 $(".img").each(function() {
     $(this).after('<p class="alt">' + $(this).attr('alt') + '</p>');
 })
