@@ -37,8 +37,8 @@ input[type=text]:focus {
 .alt-wrap {
     display: block;
     position: relative;
-    margin: 40px;
-    color: black;
+    margin: 20px;
+    color: goldenrod;
     border: 1px solid black;
 }
 
