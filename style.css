@@ -39,7 +39,7 @@ input[type=text]:focus {
     position: relative;
     margin: 20px;
     color: goldenrod;
-    border: 1px solid black;
+    border: 1px solid white;
 }
 
 .alt-wrap p.alt {
