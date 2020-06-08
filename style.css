@@ -1,14 +1,14 @@
 h1 {
-    color: red;
+    color: black;
 }
 h2 {
-    color:red;
+    color:black;
 }
 p {
-    font-family: Arial;
+    font-family: Ubuntu;
 }
 body {
-    background-color: grey;
+    background-color: white;
 }
 div {
     text-align: justify;
@@ -16,7 +16,7 @@ div {
 div img {
     display: inline-block;
     width: auto;
-    max-height: 600px;
+    max-height: 200px;
     height: auto;
 }
 
