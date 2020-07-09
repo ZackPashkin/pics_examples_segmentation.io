@@ -101,7 +101,10 @@ dictionary = {
     "ПУМА-103.3М": "https://drive.google.com/uc?id=18NdHjVcadiA51mVSum8CSe475VIps9XR"
 }
 
-model = decodeURIComponent(location.search.replace("?m=", '')).toLowerCase();
+href_params = (new URL(location.href)).searchParams;
+
+model = href_params.get("m").toLowerCase();
+model2 = href_params.get("s");
 
 $("#myinput").keyup(function() {
     var val = $.trim(this.value).toLowerCase();
