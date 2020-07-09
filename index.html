@@ -25,6 +25,7 @@ function rebuildPhotos(wanted) {
 	var showcount = 0;
     for (var k in dictionary) {
         var v = dictionary[k];
+		//console.log(k)
 		if (k.toLowerCase().includes(wanted) && showcount < examples_count) {
 			showcount++;
 			$('.img-wrap')[0].innerHTML += '<a href="' + v + '"><div class="alt-wrap"><img class="img" src="' + v + '" alt="' + k + '" /><p class="alt">' + k + '</p></div></a>'
