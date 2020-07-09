@@ -18,112 +18,94 @@
 
 
 <script>
+examples_count = 5;
 
-function showRelevant(){
-	$(".img").each(function( index ) {			
-			m=$( this )[0].alt.toLowerCase()
-			if(m.includes(model)){
-				$( this ).parent().show()
-			}
-	})
+function rebuildPhotos(wanted) {
+    $('.img-wrap')[0].innerHTML = "";
+	var showcount = 0;
+    for (var k in dictionary) {
+        var v = dictionary[k];
+		if (k.includes(wanted) && showcount < examples_count) {
+			showcount++;
+			$('.img-wrap')[0].innerHTML += '<a href="' + v + '"><div class="alt-wrap"><img class="img" src="' + v + '" alt="' + k + '" /><p class="alt">' + k + '</p></div></a>'
+        }
+    }
 }
 
-
-dictionary = {"АРБИТР-М":"https://drive.google.com/uc?id=1sxKqHyCJ3F0x3vL5xXchYD041gJRZ72j",
-"Вектор 1":"https://drive.google.com/uc?id=19lFn_0_WBQbCmv2Mz5zxL-RSNSIH-Xbi",
-"Меркурий 201.6":"https://drive.google.com/uc?id=1gzxUogLzlqVnfO1c9d3nVdbS1LnElxQZ",
-"Меркурий 201.7":"https://drive.google.com/uc?id=1RlBUj-EHlF9mlRx9kd6H2Wxbn510R5qR",
-"Меркурий 230":"https://drive.google.com/uc?id=1-tjhATgaGoKthvox3gYyaO01u3aY7ey9",
-"Меркурий201_5":"https://drive.google.com/uc?id=19Pm5ioKTKCZYEce9ASG5NY5N07dUezbN",
-"Миртек-101":"https://drive.google.com/uc?id=1SE0UgfVXfFUQEDPQC2n32rv6t0S2_YWl",
-"НЕВА 101 1so":"https://drive.google.com/uc?id=1zknC001t4SMifWZxVwdhfsp92GBTEhYx",
-"НЕВА 103":"https://drive.google.com/uc?id=1uVa0D4cOiLQfPvXZ_LXOtwRHkZCtknOm",
-"НЕВА мт 112 AS 0":"https://drive.google.com/uc?id=1_Y7ePdn0S1SXPMOWnebRaNUJl8WF6-bF",
-"СО-2м":"https://drive.google.com/uc?id=1389kXbc3vGVaZt-Qx-61DHOO7zdrZ9Du",
-"СО-и4491м2-5":"https://drive.google.com/uc?id=135tj3p0S1gX5BmWGajsMdJEBdY56xM-f",
-"СО-ээ6706":"https://drive.google.com/uc?id=1S4SuTU78qLUsSS85W37emBfJqUCLUWqO",
-"СТЭ561":"https://drive.google.com/uc?id=1X_u9DdKBEBsn4a1-bUcMiH4IKNZvXhUB",
-"СЭА11дмш":"https://drive.google.com/uc?id=18ZhdCEQYktz5edriDCftmQ2DQhgjlI4m",
-"СЭО-1.15д.402":"https://drive.google.com/uc?id=1WbFg-mHvOhLiGqZU3aXR00CdFvjsza5s",
-"СЭО-1.19.702":"https://drive.google.com/uc?id=1l21SeWyhv_3SgJH3Kk94cdHySPbySM2Z",
-"СЭО-1.20д.402":"https://drive.google.com/uc?id=1VGPGw0MppJKRerRVfiz99UCWHHX-TrVb",
-"Топаз 101 5(60)1":"https://drive.google.com/uc?id=1LtGCKQ3GbyDzGIN5t6EhOUW6YEGBaYVA",
-"Энергомера се101_m6":"https://drive.google.com/uc?id=1fTtWSmtHNQ4sQJV-UxW6LYSkFkY3tUMN",
-"Энергомера се101_v2":"https://drive.google.com/uc?id=1M7acBhd4pmHiB58TkHgwes9dBaOet50M",
-"Энергомера се101":"https://drive.google.com/uc?id=1_L5MIVeXmyky2rD37dFnok9Puu6jEl_K",
-"Энергомера се200":"https://drive.google.com/uc?id=1Tl8ToIySOZdYkw1gqDZMRYU6EX7hf_cQ",
-"Энергомера ЦЭ6807П":"https://drive.google.com/uc?id=1sN2DhLVPE3iWxt8njhYQGGmvMYUQT7F-",
-"Энергомера ЦЭ6803ВШ М7 Р32":"https://drive.google.com/uc?id=1VT9LiMWYAmcolZ8lCmmD0naoqOBSNaVs",
-"СОЭБ- Н/1":"https://drive.google.com/uc?id=1v_Liw-d1bb84rQTCHOLN3S8XeQfSl55w",
-"СОЭ-52 50-11ш":"https://drive.google.com/uc?id=1OatRZr5XM5yZufoCkXLuevx-q70sL3md",
-"СОЭБ- Н/1п":"https://drive.google.com/uc?id=1gryu3VsVxIip7YX9BT84tPnu5Mt8fxJq",
-"ЛЕ 111.1.К.РО":"https://drive.google.com/uc?id=1NB1aUC4zpKMEZj4NXETyj90-1OgSFQKf",
-"STAR 101/1 R1-5(60)M":"https://drive.google.com/uc?id=1RGfQzR5f_lPZKaYApmwt1Rf1DX_gj3HW",
-"Энергомера ЦЭ6807Бк":"https://drive.google.com/uc?id=1vueRe_Lj8AwX3oKbkDB6SKZQuZ3CRYFJ",
-"СИЭ-1":"https://drive.google.com/uc?id=1NuRQGfNFu8u8YZ3T9R38oP0eC8a8MSks",
-"СА4У-5":"https://drive.google.com/uc?id=14YZZ0CcpMfalCtNgUFjsvaPa-WQFGgp6",
-"СОЛО":"https://drive.google.com/uc?id=18diAuH6pCKKXFQZ9qohN5-1RgsifCvvF",
-"Меркурий 231 АМ-01":"https://drive.google.com/uc?id=1OLHlIAoQIX_nJyjJO9P9FLXVavM07Yqq",
-"СКАТ 101 М/1-3 Ш Р1":"https://drive.google.com/uc?id=1SpA3hecXHDVFJvrmu7_pGeDz9l-EL4QR",
-"СОЭ-52/60-31Ш":"https://drive.google.com/uc?id=1jLOynui38na9GHvYRz1WDjZCnMaQlfW1",
-"СКАТ 101М/1-5(60)":"https://drive.google.com/uc?id=1SxiX-_FjXL1wzgn4nBzEkMo8Z27bp-E4",
-"СОЭБ-1":"https://drive.google.com/uc?id=1WSrwDOhPshzukFHCpI_dpH-6wdeh_2XH",
-"СОЭ-52 60-41ш":"https://drive.google.com/uc?id=1Tm_6dlITk4LpwPX1fTB8qmiokdxsJZc_",
-"СОЭБ-2П ДР":"https://drive.google.com/uc?id=1Fo9iRZce9H0fF53IkQ9310FgoLYVxLR9",
-"ЭСО-07М":"https://drive.google.com/uc?id=1YLlLoQ3INJtS7GzT1LPAEGkjg7yAvXoO",
-"МАРС-1,0-11-Р4-5(60)-М":"https://drive.google.com/uc?id=1IgIBCjGVWwp8Nx3nbiDXvXq1bFTnU8oA",
-"НЕВА 303 1SO":"https://drive.google.com/uc?id=1ZVtXs_VpyuN02ReimiVJt4f9IBmCKBXq",
-"ТОПАЗ 101-5":"https://drive.google.com/uc?id=11Xurff0-YcTWXHp5eXdmYIUVLtzeHh0e",
-"СЭТ1-1-1-Ш-С2-У":"https://drive.google.com/uc?id=1XpPBg0hijI91VbbuwHGSZ2EOe7jkOi3A",
-"Вектор-М":"https://drive.google.com/uc?id=1ljyFI5Ah7szKfxieNn0IpFwMEdPp8i7A",
-"СО-И6106":"https://drive.google.com/uc?id=1ghDEc_kfM2smZcpAi-KOvHp4IMD-0Hjw",
-"СГБ G4":"https://drive.google.com/uc?id=1xucAyRSNYPQT0SvJc-Q9IDNFODrVh74q",
-"СО-51 ПК":"https://drive.google.com/uc?id=1cAISgoSJrpJz8w3kK6ky7Ak8JuduQ_U3",
-"Меркурий 201.8":"https://drive.google.com/uc?id=1Jc6lUofqyqIYcGF11ZT_gY4Q4UtSVW-R",
-"СОЛО 1s":"https://drive.google.com/uc?id=1mBWZQH4FL8WrwHQjEV1aDmYi7mwqdXJD",
-"СОЭ-04-М":"https://drive.google.com/uc?id=1NX4BiN8LX_rZB7HrxGUbypdg03UDTX7D",
-"Каскад-101-МТ-W1-230-5":"https://drive.google.com/uc?id=1YK0qoBg4WhTl481vZH0U4KKH3FASKhTl",
-"ЦЭ2705-3":"https://drive.google.com/uc?id=14g1UcA751hxACFxxuwQkbOxJevwPeokz",
-"Меркурий 203.1":"https://drive.google.com/uc?id=1p2_GHg_bRtOHIBx2yGJexW85BGJKjq6u",
-"ЦЭ2736":"https://drive.google.com/uc?id=1br2u_Xb9WKk_l7mNU5YfgNnGvXIGoHS1",
-"Гранит":"https://drive.google.com/uc?id=11VMO7iAo6RdyLbmxNDiOlbmsoqHJFTIB",
-"Вектор-2":"https://drive.google.com/uc?id=1abaiZeZrnJrri7Y-KcdUHlZFxG6XLJU4",
-"СОЕА09М2":"https://drive.google.com/uc?id=1sUYAigIExzh9TJkt73j0XYPTu8rY6ViE",
-"Барс-1.113":"https://drive.google.com/uc?id=1ToQ823AbAlk32gaOJEsfGZ4bx1MuHDAy",
-"СКАТ 102 М/1-5":"https://drive.google.com/uc?id=1ah7KtLkDW2hfCWnNBlwRJ17ijiHx1sQP",
-"СО-ЭА09":"https://drive.google.com/uc?id=1sdloj-0WJGPJ7VxWSnhOdSXrgn9cRmcI",
-"МС-101":"https://drive.google.com/uc?id=1nj4t5o4eM5H1RCYxGNrY2bo-5HcWM0Ms",
-"ПУМА-103.3М":"https://drive.google.com/uc?id=18NdHjVcadiA51mVSum8CSe475VIps9XR"}
-
-model = decodeURIComponent(location.search.replace("?m=",''))
-
-for(var k in dictionary) {
-  var v = dictionary[k];
-  $('.img-wrap')[0].innerHTML+='<a href="'+v+'"><img class="img" src="'+v+'" alt="'+k+'" /></a>'
+dictionary = {
+    "АРБИТР-М": "https://drive.google.com/uc?id=1sxKqHyCJ3F0x3vL5xXchYD041gJRZ72j",
+    "Вектор 1": "https://drive.google.com/uc?id=19lFn_0_WBQbCmv2Mz5zxL-RSNSIH-Xbi",
+    "Меркурий 201.6": "https://drive.google.com/uc?id=1gzxUogLzlqVnfO1c9d3nVdbS1LnElxQZ",
+    "Меркурий 201.7": "https://drive.google.com/uc?id=1RlBUj-EHlF9mlRx9kd6H2Wxbn510R5qR",
+    "Меркурий 230": "https://drive.google.com/uc?id=1-tjhATgaGoKthvox3gYyaO01u3aY7ey9",
+    "Меркурий201_5": "https://drive.google.com/uc?id=19Pm5ioKTKCZYEce9ASG5NY5N07dUezbN",
+    "Миртек-101": "https://drive.google.com/uc?id=1SE0UgfVXfFUQEDPQC2n32rv6t0S2_YWl",
+    "НЕВА 101 1so": "https://drive.google.com/uc?id=1zknC001t4SMifWZxVwdhfsp92GBTEhYx",
+    "НЕВА 103": "https://drive.google.com/uc?id=1uVa0D4cOiLQfPvXZ_LXOtwRHkZCtknOm",
+    "НЕВА мт 112 AS 0": "https://drive.google.com/uc?id=1_Y7ePdn0S1SXPMOWnebRaNUJl8WF6-bF",
+    "СО-2м": "https://drive.google.com/uc?id=1389kXbc3vGVaZt-Qx-61DHOO7zdrZ9Du",
+    "СО-и4491м2-5": "https://drive.google.com/uc?id=135tj3p0S1gX5BmWGajsMdJEBdY56xM-f",
+    "СО-ээ6706": "https://drive.google.com/uc?id=1S4SuTU78qLUsSS85W37emBfJqUCLUWqO",
+    "СТЭ561": "https://drive.google.com/uc?id=1X_u9DdKBEBsn4a1-bUcMiH4IKNZvXhUB",
+    "СЭА11дмш": "https://drive.google.com/uc?id=18ZhdCEQYktz5edriDCftmQ2DQhgjlI4m",
+    "СЭО-1.15д.402": "https://drive.google.com/uc?id=1WbFg-mHvOhLiGqZU3aXR00CdFvjsza5s",
+    "СЭО-1.19.702": "https://drive.google.com/uc?id=1l21SeWyhv_3SgJH3Kk94cdHySPbySM2Z",
+    "СЭО-1.20д.402": "https://drive.google.com/uc?id=1VGPGw0MppJKRerRVfiz99UCWHHX-TrVb",
+    "Топаз 101 5(60)1": "https://drive.google.com/uc?id=1LtGCKQ3GbyDzGIN5t6EhOUW6YEGBaYVA",
+    "Энергомера се101_m6": "https://drive.google.com/uc?id=1fTtWSmtHNQ4sQJV-UxW6LYSkFkY3tUMN",
+    "Энергомера се101_v2": "https://drive.google.com/uc?id=1M7acBhd4pmHiB58TkHgwes9dBaOet50M",
+    "Энергомера се101": "https://drive.google.com/uc?id=1_L5MIVeXmyky2rD37dFnok9Puu6jEl_K",
+    "Энергомера се200": "https://drive.google.com/uc?id=1Tl8ToIySOZdYkw1gqDZMRYU6EX7hf_cQ",
+    "Энергомера ЦЭ6807П": "https://drive.google.com/uc?id=1sN2DhLVPE3iWxt8njhYQGGmvMYUQT7F-",
+    "Энергомера ЦЭ6803ВШ М7 Р32": "https://drive.google.com/uc?id=1VT9LiMWYAmcolZ8lCmmD0naoqOBSNaVs",
+    "СОЭБ- Н/1": "https://drive.google.com/uc?id=1v_Liw-d1bb84rQTCHOLN3S8XeQfSl55w",
+    "СОЭ-52 50-11ш": "https://drive.google.com/uc?id=1OatRZr5XM5yZufoCkXLuevx-q70sL3md",
+    "СОЭБ- Н/1п": "https://drive.google.com/uc?id=1gryu3VsVxIip7YX9BT84tPnu5Mt8fxJq",
+    "ЛЕ 111.1.К.РО": "https://drive.google.com/uc?id=1NB1aUC4zpKMEZj4NXETyj90-1OgSFQKf",
+    "STAR 101/1 R1-5(60)M": "https://drive.google.com/uc?id=1RGfQzR5f_lPZKaYApmwt1Rf1DX_gj3HW",
+    "Энергомера ЦЭ6807Бк": "https://drive.google.com/uc?id=1vueRe_Lj8AwX3oKbkDB6SKZQuZ3CRYFJ",
+    "СИЭ-1": "https://drive.google.com/uc?id=1NuRQGfNFu8u8YZ3T9R38oP0eC8a8MSks",
+    "СА4У-5": "https://drive.google.com/uc?id=14YZZ0CcpMfalCtNgUFjsvaPa-WQFGgp6",
+    "СОЛО": "https://drive.google.com/uc?id=18diAuH6pCKKXFQZ9qohN5-1RgsifCvvF",
+    "Меркурий 231 АМ-01": "https://drive.google.com/uc?id=1OLHlIAoQIX_nJyjJO9P9FLXVavM07Yqq",
+    "СКАТ 101 М/1-3 Ш Р1": "https://drive.google.com/uc?id=1SpA3hecXHDVFJvrmu7_pGeDz9l-EL4QR",
+    "СОЭ-52/60-31Ш": "https://drive.google.com/uc?id=1jLOynui38na9GHvYRz1WDjZCnMaQlfW1",
+    "СКАТ 101М/1-5(60)": "https://drive.google.com/uc?id=1SxiX-_FjXL1wzgn4nBzEkMo8Z27bp-E4",
+    "СОЭБ-1": "https://drive.google.com/uc?id=1WSrwDOhPshzukFHCpI_dpH-6wdeh_2XH",
+    "СОЭ-52 60-41ш": "https://drive.google.com/uc?id=1Tm_6dlITk4LpwPX1fTB8qmiokdxsJZc_", 
+    "СОЭБ-2П ДР": "https://drive.google.com/uc?id=1Fo9iRZce9H0fF53IkQ9310FgoLYVxLR9",
+    "ЭСО-07М": "https://drive.google.com/uc?id=1YLlLoQ3INJtS7GzT1LPAEGkjg7yAvXoO",
+    "МАРС-1,0-11-Р4-5(60)-М": "https://drive.google.com/uc?id=1IgIBCjGVWwp8Nx3nbiDXvXq1bFTnU8oA",
+    "НЕВА 303 1SO": "https://drive.google.com/uc?id=1ZVtXs_VpyuN02ReimiVJt4f9IBmCKBXq",
+    "ТОПАЗ 101-5": "https://drive.google.com/uc?id=11Xurff0-YcTWXHp5eXdmYIUVLtzeHh0e",
+    "СЭТ1-1-1-Ш-С2-У": "https://drive.google.com/uc?id=1XpPBg0hijI91VbbuwHGSZ2EOe7jkOi3A",
+    "Вектор-М": "https://drive.google.com/uc?id=1ljyFI5Ah7szKfxieNn0IpFwMEdPp8i7A",
+    "СО-И6106": "https://drive.google.com/uc?id=1ghDEc_kfM2smZcpAi-KOvHp4IMD-0Hjw",
+    "СГБ G4": "https://drive.google.com/uc?id=1xucAyRSNYPQT0SvJc-Q9IDNFODrVh74q",
+    "СО-51 ПК": "https://drive.google.com/uc?id=1cAISgoSJrpJz8w3kK6ky7Ak8JuduQ_U3",
+    "Меркурий 201.8": "https://drive.google.com/uc?id=1Jc6lUofqyqIYcGF11ZT_gY4Q4UtSVW-R",
+    "СОЛО 1s": "https://drive.google.com/uc?id=1mBWZQH4FL8WrwHQjEV1aDmYi7mwqdXJD",
+    "СОЭ-04-М": "https://drive.google.com/uc?id=1NX4BiN8LX_rZB7HrxGUbypdg03UDTX7D",
+    "Каскад-101-МТ-W1-230-5": "https://drive.google.com/uc?id=1YK0qoBg4WhTl481vZH0U4KKH3FASKhTl",
+    "ЦЭ2705-3": "https://drive.google.com/uc?id=14g1UcA751hxACFxxuwQkbOxJevwPeokz",
+    "Меркурий 203.1": "https://drive.google.com/uc?id=1p2_GHg_bRtOHIBx2yGJexW85BGJKjq6u",
+    "ЦЭ2736": "https://drive.google.com/uc?id=1br2u_Xb9WKk_l7mNU5YfgNnGvXIGoHS1",
+    "Гранит": "https://drive.google.com/uc?id=11VMO7iAo6RdyLbmxNDiOlbmsoqHJFTIB",
+    "Вектор-2": "https://drive.google.com/uc?id=1abaiZeZrnJrri7Y-KcdUHlZFxG6XLJU4",
+    "СОЕА09М2": "https://drive.google.com/uc?id=1sUYAigIExzh9TJkt73j0XYPTu8rY6ViE",
+    "Барс-1.113": "https://drive.google.com/uc?id=1ToQ823AbAlk32gaOJEsfGZ4bx1MuHDAy",
+    "СКАТ 102 М/1-5": "https://drive.google.com/uc?id=1ah7KtLkDW2hfCWnNBlwRJ17ijiHx1sQP",
+    "СО-ЭА09": "https://drive.google.com/uc?id=1sdloj-0WJGPJ7VxWSnhOdSXrgn9cRmcI",
+    "МС-101": "https://drive.google.com/uc?id=1nj4t5o4eM5H1RCYxGNrY2bo-5HcWM0Ms",
+    "ПУМА-103.3М": "https://drive.google.com/uc?id=18NdHjVcadiA51mVSum8CSe475VIps9XR"
 }
+
+model = decodeURIComponent(location.search.replace("?m=", '')).toLowerCase();
 
 $("#myinput").keyup(function() {
-	var val = $.trim(this.value).toLowerCase();
-	$('img').parent().hide();
-	if(val.length>0){
-		$('img').each(function( index ) {
-			m=$( this )[0].alt.toLowerCase()
-			if(m.includes(val)){
-				$( this ).parent().show()
-			}
-		})
-	}else{
-		showRelevant()
-	}
+    var val = $.trim(this.value).toLowerCase();
+    rebuildPhotos(val.length > 0 ? val : model);
 });
 
-$(".img").wrap('<div class="alt-wrap"/>');
-
-$(".img").each(function() {
-    $(this).after('<p class="alt">' + $(this).attr('alt') + '</p>');
-})
-$('img').parent().hide();
-
-
-showRelevant()
+rebuildPhotos(model);
 </script>
